@@ -1,0 +1,21 @@
+<ul class="nav pt-2 nav-dark bg-dark">
+    <li class="nav-item">
+      <a class="nav-link text-light" aria-current="page" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-light" href="#">Add product</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-light" href="#">Profile</a>
+    </li>
+    <li class="nav-item">
+    {% if user.is_authenticated %}
+    <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+      <button type="submit" class="nav-link text-light bg-dark btn btn-link">Logout</button>
+    </form>
+    {% else %}
+      <a class="nav-link text-light" href="{% url 'login' %}" tabindex="-1" aria-disabled="true">Login</a>
+    {% endif %}
+    </li>
+  </ul>
