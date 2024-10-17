@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center p-3">
+
+    <div class="col-md-6 ms-0">
+        <h1 class="d-flex justify-content-center">Profile</h1>
+
+        <ul class="list-group">
+            <li class="list-group-item">Username: {{ user.username }}</li>
+            <li class="list-group-item">Email: {{ user.email }}</li>
+        </ul>
+
+        <a class = "btn btn-dark" href = "#">Edit Profile</a>
+    </div>
+
+    <div class="col-md-6 border-start">
+        <h1 class="d-flex justify-content-center ">Orders</h1>
+        {% for order in orders %}
+        <ul class="list-group mb-3">
+            <li class="list-group-item">Product: {{ order.item }}</li>
+            <li class="list-group-item">Quantity: {{ order.quantity }}</li>
+            <li class="list-group-item">Total: Rs.{{ order.total }}</li>
+            <li class="list-group-item">Date: {{ order.orderedAt }}</li>
+            {% if order.status %}
+            <li class="list-group-item">Status: Delivered</li>
+            {% else %}
+            <li class="list-group-item">Status: Pending</li>
+            {% endif %}
+        </ul>
+        {% endfor %}
+
+</div>
+{% endblock %}
