@@ -12,9 +12,8 @@
             <div class="card-body"> 
                 <h5 class="card-title">{{ item.title }}</h5>
                 <p class="card-text">{{ item.description }}</p>
-                    <p class="card-text"><small class="text-muted">Listed on {{ item.listedAt }}</small></p>
-
-                    <a href="{% url 'buyItem' item.id %}" class="btn btn-outline-dark">Buy</a>
+                <p class="card-text"><small class="text-muted">Listed on {{ item.listedAt|date }} by {{ item.listedBy }}</small></p>
+                <a href="{% url 'buyItem' item.id %}" class="btn btn-outline-dark">Buy</a>
             </div>
         </div>
     </div>
